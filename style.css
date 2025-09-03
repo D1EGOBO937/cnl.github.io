@@ -1,0 +1,161 @@
+/* ---------- Variables de color (Azul & Oro) ---------- */
+:root{
+    --azul-900:#071a3a;
+    --azul-700:#0a2a6b;
+    --azul-500:#174ea6;
+    --oro-400:#f2c230;
+    --oro-300:#ffd86b;
+    --blanco:#ffffff;
+    --gris-100:#f6f7fb;
+    --glass: rgba(255,255,255,.12);
+    --borde: rgba(255,255,255,.25);
+    --shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  
+  /* ---------- Reset elegante ---------- */
+  *{ box-sizing:border-box }
+  html,body{ height:100% }
+  body{
+    margin:0;
+    font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:#f2f6ff;
+    background: var(--azul-900);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  
+  /* Fondo con gradientes en azul y oro */
+  .bg-layer{
+    position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(1200px 600px at -10% -10%, rgba(242,194,48,.25), transparent 60%),
+      radial-gradient(900px 450px at 110% 110%, rgba(242,194,48,.18), transparent 60%),
+      radial-gradient(800px 500px at 120% 0%, rgba(23,78,166,.35), transparent 60%),
+      linear-gradient(180deg, #0a1f48, #081635 60%, #06122b);
+  }
+  
+  /* Sutil textura dorada */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:
+      linear-gradient(130deg, rgba(242,194,48,.10) 0%, rgba(242,194,48,0) 60%),
+      linear-gradient(0deg, rgba(255,255,255,.03), rgba(255,255,255,.0));
+    mix-blend-mode:screen;
+  }
+  
+  /* ---------- Layout ---------- */
+  .container{ width:min(1100px, 92%); margin-inline:auto }
+  .section{ padding:72px 0 }
+  .grid{ display:grid; gap:24px }
+  .grid.two{ grid-template-columns: repeat(2, minmax(0,1fr)) }
+  .grid.three{ grid-template-columns: repeat(3, minmax(0,1fr)) }
+  
+  @media (max-width:900px){
+    .grid.two, .grid.three{ grid-template-columns:1fr }
+  }
+  
+  /* ---------- Navbar ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(180deg, rgba(7,26,58,.9), rgba(7,26,58,.6));
+    border-bottom:1px solid var(--borde);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:12px 0 }
+  .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--blanco) }
+  .brand-logo{
+    width:40px; height:40px; border-radius:12px;
+    background: radial-gradient(circle at 30% 30%, var(--oro-300), var(--oro-400));
+    color:#1f1300; display:grid; place-items:center; font-weight:800;
+    box-shadow: var(--shadow);
+  }
+  .brand-text{ font-weight:700; letter-spacing:.2px }
+  .menu a{
+    color:#eaf1ff; text-decoration:none; margin-left:18px; font-weight:600; font-size:.98rem;
+    padding:.45rem .7rem; border-radius:999px; transition:.25s ease;
+    border:1px solid transparent;
+  }
+  .menu a:hover{ border-color:var(--oro-400); color:var(--blanco); transform:translateY(-1px) }
+  
+  /* ---------- Hero ---------- */
+  .hero{ display:grid; place-items:center; padding:80px 0 40px }
+  .hero h1{
+    font-family:'Libre Baskerville', serif;
+    font-size: clamp(1.9rem, 3.2vw + .8rem, 3.2rem);
+    line-height:1.15; margin:0 0 12px; letter-spacing:.3px;
+  }
+  .highlight{ background:linear-gradient(90deg, var(--oro-300), var(--oro-400));
+    -webkit-background-clip:text; background-clip:text; color:transparent }
+  .hero p{ max-width:60ch; opacity:.92; margin:.5rem 0 1rem }
+  .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-top:.6rem }
+  .badge{
+    display:inline-block; padding:.45rem .8rem; border-radius:999px;
+    background:rgba(255,255,255,.12); border:1px solid var(--borde);
+    font-size:.85rem
+  }
+  
+  /* ---------- Cards / contenido ---------- */
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+    border:1px solid var(--borde);
+    border-radius:20px; padding:22px 22px;
+    box-shadow: var(--shadow);
+  }
+  h2{ font-size: clamp(1.4rem, 1.4vw + 1rem, 2rem); margin:0 0 10px }
+  h3{ margin:0 0 8px; font-size:1.15rem }
+  p{ margin:0 0 10px }
+  .list{ margin:0; padding-left:18px }
+  .list li{ margin:6px 0 }
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; list-style:none; padding:0; margin:0 }
+  .chips li{
+    padding:.5rem .8rem; border-radius:999px; background:rgba(255,255,255,.12);
+    border:1px solid var(--borde)
+  }
+  
+  /* ---------- Stats ---------- */
+  .stat{ text-align:center }
+  .stat-number{ font-size:2.2rem; font-weight:800; color:var(--oro-300); display:block }
+  .stat-label{ opacity:.9; font-weight:600 }
+  
+  /* ---------- Timeline ---------- */
+  .timeline{
+    position:relative; padding-left:20px; margin-top:12px; display:grid; gap:18px
+  }
+  .timeline::before{
+    content:""; position:absolute; left:8px; top:0; bottom:0; width:3px;
+    background:linear-gradient(var(--oro-400), var(--azul-500)); border-radius:3px
+  }
+  .tl-item{
+    position:relative; padding:14px 16px 12px 18px; border-radius:16px;
+    background: rgba(255,255,255,.08); border:1px solid var(--borde)
+  }
+  .tl-item::before{
+    content:""; position:absolute; left:-2px; top:20px; width:12px; height:12px; border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, var(--oro-300), var(--oro-400));
+    box-shadow:0 0 0 4px rgba(242,194,48,.25)
+  }
+  .tl-item time{ font-weight:800; color:var(--oro-300); margin-right:8px }
+  
+  /* ---------- CTA & Botón ---------- */
+  .cta{ text-align:center }
+  .btn{
+    display:inline-block; margin-top:10px; padding:.8rem 1.1rem; font-weight:800;
+    color:#1a1300; text-decoration:none; border-radius:14px; transition:.2s ease;
+    background:linear-gradient(180deg, var(--oro-300), var(--oro-400));
+    box-shadow: var(--shadow);
+  }
+  .btn:hover{ transform:translateY(-2px) }
+  
+  /* ---------- Footer ---------- */
+  .site-footer{
+    margin-top:40px; padding:24px 0; text-align:center;
+    border-top:1px solid var(--borde);
+    background:linear-gradient(180deg, rgba(7,26,58,.6), rgba(7,26,58,.95));
+  }
+  .site-footer p{ margin:0; opacity:.95 }
+  
+  /* ---------- Accesibilidad / enfoque ---------- */
+  a:focus-visible, .btn:focus-visible{
+    outline:3px solid var(--oro-300); outline-offset:2px; border-radius:12px
+  }
+  
